@@ -93,10 +93,8 @@ function App() {
 
   // 🧠 API CALL
   const analyze = async () => {
-  try {
-    const res = await axios.post(
-      `${import.meta.env.VITE_API_URL}/analyze`,
-      {
+    try {
+      const res = await axios.post("http://127.0.0.1:8000/analyze", {
         balance: Number(data.balance),
         rent: Number(data.rent),
         food: Number(data.food),
@@ -104,14 +102,13 @@ function App() {
         spend: Number(data.spend),
         future_spend: Number(data.future_spend),
         months: Number(data.months),
-      }
-    );
+      });
 
-    setResult(res.data);
-  } catch (err) {
-    alert("Backend not running or CORS issue");
-  }
-};
+      setResult(res.data);
+    } catch (err) {
+      alert("Backend not running or CORS issue");
+    }
+  };
 
   return (
     <div className="bg-gradient-to-br from-slate-900 to-black min-h-screen text-white flex flex-col items-center justify-center gap-6 p-6">
